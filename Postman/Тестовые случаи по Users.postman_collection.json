@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "b9aacb81-2038-4338-a889-47c29d929a17",
+		"name": "Тестовые случаи по Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DoRegister1",
+			"item": [
+				{
+					"name": "использовать в почте недопустимые знаки",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"!\"№;%:@mail.ru\",\r\n    \"name\": \" Anna\",\r\n    \"password\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{userurltest}}/doregister",
+							"host": [
+								"{{userurltest}}"
+							],
+							"path": [
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "зарегистрировать пользователя повторно",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"fnbfgnb@mail.ru\",\r\n    \"name\": \" Anna\",\r\n    \"password\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{userurltest}}/doregister",
+							"host": [
+								"{{userurltest}}"
+							],
+							"path": [
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "зарегистрировать c пустым именем",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"fnbfgngb@mail.ru\",\r\n    \"name\": \"\",\r\n    \"password\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{userurltest}}/doregister",
+							"host": [
+								"{{userurltest}}"
+							],
+							"path": [
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AddAvatar1",
+			"item": [
+				{
+					"name": "аватар в формате png",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/data/photo/Мои рисунки/Картиночки/Новая папка (3)/gallery_17610_1403_59727.png"
+								},
+								{
+									"key": "email",
+									"value": "fnbfgnb@mail.ru",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{userurltest}}/addavatar/",
+							"host": [
+								"{{userurltest}}"
+							],
+							"path": [
+								"addavatar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "аватар в формате gif - выдает ошибку о размере файла",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/data/photo/Мои рисунки/Картиночки/картинки/jofr.gif"
+								},
+								{
+									"key": "email",
+									"value": "fnbfgnb@mail.ru",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{userurltest}}/addavatar/",
+							"host": [
+								"{{userurltest}}"
+							],
+							"path": [
+								"addavatar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Размер изображения больше 150кб Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/data/photo/Новая папка/Фото0174.jpg"
+								},
+								{
+									"key": "email",
+									"value": "fnbfgnb@mail.ru",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{userurltest}}/addavatar/",
+							"host": [
+								"{{userurltest}}"
+							],
+							"path": [
+								"addavatar",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CreateCompany1",
+			"item": [
+				{
+					"name": "Создание компании с некорректным типом 123",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"Рога и Копыта\",\r\n  \"company_type\": \"123\",\r\n  \"company_users\": [\"fnbfgnb@mail.ru\"],\r\n  \"email_owner\": \"aa+1@mail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{userurltest}}/createcompany",
+							"host": [
+								"{{userurltest}}"
+							],
+							"path": [
+								"createcompany"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CreateUserwithtasks1",
+			"item": [
+				{
+					"name": "Создание польз. с кол-вом задач больше 5 - не ругается, а должно",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"pirogok1@mail.com\",\r\n \"name\": \"Пирожок1\",\r\n \"tasks\": [{\r\n   \"title\": \"Обед\",\r\n   \"description\": \"Съесть суп\"\r\n  },\r\n  {\r\n   \"title\": \"Ужин\",\r\n   \"description\": \"Съесть салат\"\r\n  },\r\n  {\r\n   \"title\": \"Завтрак\",\r\n   \"description\": \"Съесть яичницу\"\r\n  },\r\n  {\r\n   \"title\": \"Полдник\",\r\n   \"description\": \"Съесть конфету\"\r\n  },\r\n  {\r\n   \"title\": \"Ночью нельзя есть\",\r\n   \"description\": \"Ничего не есть\"\r\n  },{\r\n   \"title\": \"Похудеть\",\r\n   \"description\": \"Много бегать\"\r\n  },{\r\n   \"title\": \"Работа\",\r\n   \"description\": \"Работать\"\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{userurltest}}/createuserwithtasks",
+							"host": [
+								"{{userurltest}}"
+							],
+							"path": [
+								"createuserwithtasks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "userurltest",
+			"value": "http://users.bugred.ru/tasks/rest",
+			"type": "default"
+		}
+	]
+}
